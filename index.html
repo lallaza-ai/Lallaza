@@ -1,351 +1,169 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Sustainable Garden Project — Lallaza</title>
-  <meta name="description" content="ICT Joint Group Assignment — Sustainable Garden Project for Food Security">
-  <style>
-    :root{
-      --green-1:#0b6b2b; /* primary */
-      --green-2:#159e38; /* accent */
-      --green-3:#a8e6a1; /* light */
-      --bg:#f4faf5;
-      --muted:#6b7280;
-      --card:#ffffff;
-      --glass: rgba(255,255,255,0.7);
-      --radius:12px;
-      --maxw:1100px;
-    }
-    *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; margin:0; background:linear-gradient(180deg,var(--bg),#eef7ef); color:#123;}
-
-    header{background:linear-gradient(90deg,var(--green-1),var(--green-2)); color:white; padding:26px 18px; text-align:center}
-    header h1{margin:0;font-size:clamp(18px,3vw,28px);letter-spacing:0.6px}
-    header p{margin:6px 0 0;opacity:0.95}
-
-    /* NAV */
-    .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;max-width:var(--maxw);margin:14px auto}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--green-2),var(--green-3));display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    nav{display:flex;gap:8px;align-items:center}
-    .nav-btn{background:transparent;border:none;padding:10px 14px;border-radius:10px;color:var(--green-1);cursor:pointer;font-weight:600}
-    .nav-btn:hover{background:rgba(21,158,56,0.08)}
-
-    /* dropdown */
-    .dropdown{position:relative}
-    .dropdown-menu{position:absolute;top:calc(100% + 8px);left:0;background:var(--card);border-radius:10px;box-shadow:0 6px 24px rgba(17,24,39,0.08);min-width:220px;display:none;padding:8px;z-index:40}
-    .dropdown-menu button{display:block;width:100%;text-align:left;padding:10px;border-radius:8px;border:none;background:transparent;cursor:pointer;color:#063;}
-    .dropdown-menu button:hover{background:var(--green-3)}
-    .dropdown.open .dropdown-menu{display:block}
-
-    /* mobile */
-    .hamburger{display:none;background:transparent;border:none;padding:8px;border-radius:8px}
-    .hamburger div{width:26px;height:3px;background:var(--green-1);margin:5px 0;border-radius:3px;transition:transform .2s}
-
-    /* layout */
-    .container{max-width:var(--maxw);margin:18px auto;padding:0 18px}
-    .grid{display:grid;grid-template-columns:1fr 340px;gap:18px}
-
-    main{background:transparent}
-    section.card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:0 6px 24px rgba(10,12,10,0.04);margin-bottom:14px}
-    h2{color:var(--green-1);margin-top:0}
-    ul{line-height:1.65}
-    .small{color:var(--muted);font-size:14px}
-
-    /* sidebar */
-    aside{position:sticky;top:18px;height:fit-content}
-    .panel{background:linear-gradient(180deg,rgba(255,255,255,0.85),var(--glass));padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(10,12,10,0.04)}
-    .qr {display:flex;gap:12px;align-items:center}
-    .qr img{width:96px;height:96px;border-radius:8px;border:4px solid white;box-shadow:0 6px 18px rgba(6,10,6,0.06)}
-    .link{word-break:break-all;font-size:13px;color:var(--green-1)}
-
-    /* auth modal (center) */
-    #authModal{position:fixed;inset:0;background:rgba(2,6,2,0.35);display:flex;align-items:center;justify-content:center;padding:18px;visibility:hidden;opacity:0;transition:opacity .18s,visibility .18s}
-    #authModal.open{visibility:visible;opacity:1}
-    .auth-panel{width:360px;background:var(--card);padding:18px;border-radius:12px}
-    .auth-panel h3{margin:0 0 8px;color:var(--green-1)}
-    .auth-panel input{width:100%;padding:10px;margin:8px 0;border-radius:8px;border:1px solid #e7efe7}
-    .btn{background:var(--green-2);color:white;padding:10px;border:none;border-radius:10px;cursor:pointer;width:100%}
-    .ghost{background:transparent;border:1px solid #e3efe3;color:var(--green-1)}
-
-    /* responsive */
-    @media (max-width:920px){
-      .grid{grid-template-columns:1fr}
-      nav{display:none}
-      .hamburger{display:block}
-      .topbar{align-items:center}
-      .panel{margin-top:12px}
-    }
-
-    /* tiny helpers */
-    .muted{color:var(--muted)}
-    a.btn-link{display:inline-block;padding:8px 12px;border-radius:8px;background:linear-gradient(90deg,var(--green-2),var(--green-1));color:white;text-decoration:none}
-    footer{max-width:var(--maxw);margin:18px auto;padding:12px 18px;color:var(--muted);font-size:13px}
-
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sustainable Garden Project — Lallaza</title>
+<style>
+:root{
+  --green-1:#0b6b2b;
+  --green-2:#159e38;
+  --green-3:#a8e6a1;
+  --bg:#f4faf5;
+  --muted:#6b7280;
+  --card:#ffffff;
+  --radius:12px;
+  --maxw:1200px;
+}
+*{box-sizing:border-box;}
+body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; margin:0; background:var(--bg); color:#123;}
+h1,h2,h3,h4{margin:0;}
+button{cursor:pointer;border:none;}
+#welcomeScreen{
+  position:fixed; inset:0; background:linear-gradient(135deg,var(--green-2),var(--green-3)); color:white; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:24px;
+}
+#welcomeScreen h1{font-size:clamp(28px,5vw,48px); margin-bottom:12px;}
+#welcomeScreen p{font-size:18px; margin-bottom:24px; max-width:400px;}
+#welcomeScreen .btn{padding:14px 28px; border-radius:12px; margin:6px; font-weight:600; background:white; color:var(--green-2); transition:0.2s;}
+#welcomeScreen .btn:hover{background:var(--green-3); color:white;}
+#mainContent{display:none; max-width:var(--maxw); margin:0 auto; padding:0; display:flex; min-height:100vh;}
+aside{width:260px; background:var(--green-1); color:white; padding:24px 16px; display:flex; flex-direction:column;}
+aside h2{margin-bottom:24px; text-align:center;}
+.sidebar-menu{flex:1; display:flex; flex-direction:column; gap:8px;}
+.sidebar-menu button{padding:12px 16px; border-radius:8px; background:transparent; color:white; text-align:left; font-weight:600; transition:0.2s;}
+.sidebar-menu button:hover, .sidebar-menu button.active{background:var(--green-2);}
+#logoutBtn{margin-top:24px; background:white; color:var(--green-1); font-weight:600; text-align:center;}
+main{flex:1; padding:24px; overflow-y:auto;}
+section{display:none; background:var(--card); padding:24px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08);}
+section.active{display:block;}
+h2{margin-bottom:16px; color:var(--green-1);}
+p,li{margin-bottom:10px; line-height:1.6;}
+ul,ol{padding-left:20px;}
+#authModal{position:fixed; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; padding:18px; visibility:hidden; opacity:0; transition:0.3s;}
+#authModal.open{visibility:visible; opacity:1;}
+.auth-panel{width:380px; background:white; padding:32px; border-radius:16px; box-shadow:0 12px 28px rgba(0,0,0,0.25); text-align:center;}
+.auth-panel h3{margin-bottom:16px; color:var(--green-2); font-size:24px;}
+.auth-panel .icon{font-size:48px; margin-bottom:16px; color:var(--green-1);}
+.auth-input{position:relative; margin:12px 0;}
+.auth-input input{width:100%; padding:12px 36px 12px 36px; border-radius:8px; border:1px solid #ccc; font-size:14px; transition:0.2s;}
+.auth-input input:focus{border-color:var(--green-2); outline:none;}
+.auth-input .auth-icon{position:absolute; top:50%; left:12px; transform:translateY(-50%); color:var(--muted); font-size:18px; pointer-events:none;}
+.auth-panel .btn{width:100%; padding:12px; border-radius:12px; margin-top:12px; font-weight:600; background:var(--green-2); color:white; transition:0.2s;}
+.auth-panel .btn:hover{background:var(--green-1);}
+.auth-panel .ghost{background:transparent; border:1px solid var(--green-2); color:var(--green-2);}
+.auth-panel small{display:block; margin-top:8px; color:var(--muted);}
+</style>
 </head>
 <body>
-  <header>
-    <h1>ICT Joint Group Assignment — Sustainable Garden Project</h1>
-    <p class="small">Promoting food security through small-scale gardens & ICT skills</p>
-  </header>
-
-  <div class="topbar">
-    <div class="brand">
-      <div class="logo">SG</div>
-      <div>
-        <strong>Sustainable Garden</strong><br>
-        <span class="small muted">Lallaza / ICT JGA</span>
-      </div>
+<div id="welcomeScreen">
+  <h1>Welcome to the Sustainable Garden Project</h1>
+  <p>Explore how ICT and community gardening can improve food security. Please login or register to continue.</p>
+  <button class="btn" onclick="openAuth('login')">Login</button>
+  <button class="btn" onclick="openAuth('register')">Register</button>
+</div>
+<div id="mainContent">
+  <aside>
+    <h2>Menu</h2>
+    <div class="sidebar-menu">
+      <button class="active" data-section="intro">Introduction</button>
+      <button data-section="goals">Goals</button>
+      <button data-section="approach">Approach</button>
+      <button data-section="results">Research Results</button>
+      <button data-section="data">Visuals & Data</button>
+      <button data-section="suggestions">Suggestions</button>
+      <button data-section="conclusion">Conclusion</button>
+      <button data-section="references">References</button>
+      <button id="liveLinkBtn">Live Site</button>
     </div>
-
-    <nav id="desktopNav">
-      <div class="dropdown" id="menuDrop">
-        <button class="nav-btn" onclick="toggleDropdown()">Project ▾</button>
-        <div class="dropdown-menu" aria-hidden="true">
-          <button onclick="navigateTo('intro')">Introduction</button>
-          <button onclick="navigateTo('goals')">Goals</button>
-          <button onclick="navigateTo('approach')">Approach</button>
-          <button onclick="navigateTo('results')">Research Results</button>
-          <button onclick="navigateTo('data')">Visuals & Data</button>
-          <button onclick="navigateTo('website')">Website Overview</button>
-          <button onclick="navigateTo('suggestions')">Suggestions</button>
-          <button onclick="navigateTo('conclusion')">Conclusion</button>
-          <button onclick="navigateTo('references')">References</button>
-        </div>
-      </div>
-      <button class="nav-btn" onclick="openAuth('login')">Login</button>
-      <button class="nav-btn" onclick="openAuth('register')">Register</button>
-    </nav>
-
-    <button class="hamburger" id="hambBtn" aria-label="menu" onclick="toggleMobile()">
-      <div></div><div></div><div></div>
-    </button>
-  </div>
-
-  <div class="container grid">
-    <main>
-      <section id="intro" class="card">
-        <h2>1. Introduction</h2>
-        <p>
-          The ICT Joint Group Assignment (JGA) explores sustainable garden projects to promote food security,
-          community involvement, and digital literacy. This project aligns with the United Nations Sustainable Development Goals (SDG 1 &amp; 2).
-        </p>
-      </section>
-
-      <section id="goals" class="card" style="display:none">
-        <h2>2. Goals</h2>
-        <ul>
-          <li>Investigate food-security promoting community garden initiatives.</li>
-          <li>Understand obstacles and success factors of community gardening.</li>
-          <li>Create a clean, interactive website to communicate findings.</li>
-          <li>Promote ICT-based problem solving and digital literacy.</li>
-        </ul>
-      </section>
-
-      <section id="approach" class="card" style="display:none">
-        <h2>3. Approach</h2>
-        <p class="small">Research used government publications, NGO reports, academic papers, and case studies from community projects across South Africa.</p>
-      </section>
-
-      <section id="results" class="card" style="display:none">
-        <h2>4. Research Results</h2>
-        <ul>
-          <li><strong>Soweto School Garden:</strong> Saves the school R2,500/month by providing daily meals.</li>
-          <li><strong>Durban Community Cooperative:</strong> Supports 35 households through vegetable sales.</li>
-          <li><strong>Pretoria University Garden:</strong> Supplies campus cafeteria and shelters.</li>
-          <li><strong>Limpopo Household Gardens:</strong> 120+ households growing beans and maize.</li>
-          <li><strong>Cape Town NGO Project:</strong> Donates produce to shelters.</li>
-        </ul>
-      </section>
-
-      <section id="data" class="card" style="display:none">
-        <h2>5. Visuals & Data Analysis</h2>
-        <ul>
-          <li>Soweto School Garden: 950 kg/year</li>
-          <li>Durban Community Garden: 1,300 kg/year</li>
-          <li>University Garden: 600 kg/year</li>
-          <li>Limpopo household gardens: 5,400 kg/year</li>
-          <li>Cape Town's NGO Garden: 700 kg/year</li>
-        </ul>
-        <p class="small">Home gardens contribute the largest share of local food supply in the studied communities.</p>
-      </section>
-
-      <section id="website" class="card" style="display:none">
-        <h2>6. Website Overview</h2>
-        <p>This website uses modern HTML, CSS and JavaScript to present results in an interactive layout. It is designed to be mobile-friendly, accessible, and easy to host on GitHub Pages.</p>
-      </section>
-
-      <section id="suggestions" class="card" style="display:none">
-        <h2>7. Suggestions</h2>
-        <ul>
-          <li>Encourage small food gardens at household level.</li>
-          <li>Promote rainwater harvesting to reduce water stress.</li>
-          <li>Run training sessions on eco-friendly gardening techniques.</li>
-        </ul>
-      </section>
-
-      <section id="conclusion" class="card" style="display:none">
-        <h2>8. Conclusion</h2>
-        <p>Community gardens show promise in addressing poverty and hunger. Collaboration between individuals and organizations—supported by digital skills—can boost sustainable food security.</p>
-      </section>
-
-      <section id="references" class="card" style="display:none">
-        <h2>References</h2>
-        <ol>
-          <li>Department of Agriculture. (2024). Community Gardens and Food Security in South Africa.</li>
-          <li>Grow Together SA. (2023). Urban Farming Case Studies.</li>
-          <li>Food and Agriculture Organization (FAO). (2023). How Urban Gardens Support Zero Hunger.</li>
-        </ol>
-      </section>
-    </main>
-
-    <aside>
-      <div class="panel">
-        <h3>Access & Share</h3>
-        <p class="small">Scan the QR code or open the link to access the live site on GitHub Pages.</p>
-        <div class="qr" style="margin-top:8px">
-          <img id="qrImg" src="frame.png" alt="QR code to GitHub Pages">
-          <div>
-            <div style="font-size:14px;font-weight:700;color:var(--green-1)">Live link</div>
-            <div class="link" id="liveLink"></div>
-            <div style="margin-top:8px"><a id="openLink" class="btn-link" target="_blank" rel="noopener">Open live site</a></div>
-          </div>
-        </div>
-
-        <hr style="margin:12px 0;border:none;border-top:1px solid rgba(6,10,6,0.05)">
-
-        <h4>Quick actions</h4>
-        <button class="btn" onclick="openAuth('login')">Login</button>
-        <button class="btn ghost" style="margin-top:8px" onclick="openAuth('register')">Register</button>
-      </div>
-
-      <div class="panel" style="margin-top:12px">
-        <h4>About this project</h4>
-        <p class="small">A student project demonstrating how ICT can support community food-security efforts.</p>
-      </div>
-    </aside>
-  </div>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-      <div>Built by <strong>Lallaza</strong> • ICT JGA</div>
-      <div class="small muted">Tips: Commit this file as <code>index.html</code> to the root of your GitHub repo and enable GitHub Pages.</div>
-    </div>
-  </footer>
-
-  <!-- Auth modal -->
-  <div id="authModal" aria-hidden="true">
-    <div class="auth-panel">
-      <h3 id="authTitle">Login</h3>
-      <input id="nameInput" placeholder="Full name (for registration)" style="display:none">
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+  </aside>
+  <main>
+    <section id="intro" class="active"><h2>Introduction</h2><p>The ICT Joint Group Assignment explores sustainable garden projects to promote food security, community involvement, and digital literacy.</p></section>
+    <section id="goals"><h2>Goals</h2><ul><li>Investigate community garden initiatives.</li><li>Understand obstacles and success factors.</li></ul></section>
+    <section id="approach"><h2>Approach</h2><p>Research included government publications, NGO reports, academic papers, and case studies across South Africa.</p></section>
+    <section id="results"><h2>Research Results</h2><ul><li>Soweto School Garden: Saves R2,500/month.</li><li>Durban Community Cooperative: Supports 35 households.</li></ul></section>
+    <section id="data"><h2>Visuals & Data</h2><p>Home gardens contribute the largest share of local food supply in studied communities.</p></section>
+    <section id="suggestions"><h2>Suggestions</h2><ul><li>Encourage small household gardens.</li><li>Promote rainwater harvesting.</li></ul></section>
+    <section id="conclusion"><h2>Conclusion</h2><p>Community gardens show promise in addressing poverty and hunger.</p></section>
+    <section id="references"><h2>References</h2><ol><li>Department of Agriculture, 2024.</li><li>Grow Together SA, 2023.</li></ol></section>
+  </main>
+</div>
+<div id="authModal">
+  <div class="auth-panel">
+    <div class="icon">🌱</div>
+    <h3 id="authTitle">Login</h3>
+    <div class="auth-input" id="emailWrapper">
+      <span class="auth-icon">📧</span>
       <input id="emailInput" placeholder="Email">
-      <input id="passInput" placeholder="Password" type="password">
-      <div style="display:flex;gap:8px;margin-top:12px">
-        <button class="btn" id="authSubmit">Submit</button>
-        <button class="btn ghost" onclick="closeAuth()">Cancel</button>
-      </div>
-      <div style="margin-top:8px;text-align:center"><small class="muted">Credentials are stored locally in your browser (localStorage).</small></div>
     </div>
+    <div class="auth-input">
+      <span class="auth-icon">🔒</span>
+      <input id="passInput" placeholder="Password" type="password">
+    </div>
+    <div class="auth-input" id="nameWrapper" style="display:none;">
+      <span class="auth-icon">👤</span>
+      <input id="nameInput" placeholder="Full Name">
+    </div>
+    <button class="btn" id="authSubmit">Submit</button>
+    <button class="btn ghost" onclick="closeAuth()">Cancel</button>
+    <small>Credentials are stored locally in your browser.</small>
   </div>
-
-  <script>
-    /* -------------------- Config (edit if needed) -------------------- */
-    const userName = 'lallaza-ai';
-    const repoName = 'Lallaza';
-    const githubPagesUrl = `https://${userName}.github.io/${repoName}/`;
-    /* ----------------------------------------------------------------- */
-
-    // Populate QR and link (Google Chart API used for convenience)
-    const qrImg = document.getElementById('qrImg');
-    const liveLink = document.getElementById('liveLink');
-    const openLink = document.getElementById('openLink');
-    const qrUrl = encodeURIComponent(githubPagesUrl);
-    qrImg.src = 'frame.png';
-    qrImg.src = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${qrUrl}&choe=UTF-8`;
-    liveLink.textContent = githubPagesUrl;
-    openLink.href = githubPagesUrl;
-
-    // Dropdown and mobile
-    function toggleDropdown(){ document.getElementById('menuDrop').classList.toggle('open') }
-    function toggleMobile(){
-      const nav = document.getElementById('desktopNav');
-      if(getComputedStyle(nav).display === 'none'){
-        nav.style.display = 'flex';
-      } else {
-        nav.style.display = 'none';
-      }
-    }
-
-    // Sections navigation
-    function navigateTo(id){
-      const sections = document.querySelectorAll('main section');
-      sections.forEach(s => s.style.display = 'none');
-      const el = document.getElementById(id);
-      if(el) el.style.display = 'block';
-      // close mobile nav if open
-      const nav = document.getElementById('desktopNav'); if(window.innerWidth<920) nav.style.display='none';
-      window.scrollTo({top:0,behavior:'smooth'});
-      document.getElementById('menuDrop').classList.remove('open');
-    }
-
-    // AUTH (localStorage)
-    function openAuth(mode){
-      const modal = document.getElementById('authModal');
-      modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
-      const title = document.getElementById('authTitle');
-      const nameInput = document.getElementById('nameInput');
-      const emailInput = document.getElementById('emailInput');
-      const passInput = document.getElementById('passInput');
-      const submit = document.getElementById('authSubmit');
-      if(mode==='register'){
-        title.textContent='Register'; nameInput.style.display='block';
-        submit.onclick = () => { registerUser(nameInput.value,emailInput.value,passInput.value); };
-      } else {
-        title.textContent='Login'; nameInput.style.display='none';
-        submit.onclick = () => { loginUser(emailInput.value,passInput.value); };
-      }
-    }
-    function closeAuth(){ const modal=document.getElementById('authModal'); modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
-
-    function registerUser(name,email,password){
-      if(!name || !email || !password){ alert('Please fill all fields'); return; }
-      const users = JSON.parse(localStorage.getItem('sg_users')||'{}');
-      if(users[email]){ alert('User already registered with that email'); return; }
-      users[email] = {name, password};
-      localStorage.setItem('sg_users', JSON.stringify(users));
-      alert('Registration successful — you can now login');
-      closeAuth();
-    }
-    function loginUser(email,password){
-      const users = JSON.parse(localStorage.getItem('sg_users')||'{}');
-      if(users[email] && users[email].password === password){
-        alert('Login successful — welcome ' + users[email].name);
-        closeAuth();
-      } else { alert('Incorrect email or password'); }
-    }
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e)=>{
-      const drop = document.getElementById('menuDrop');
-      if(!drop.contains(e.target)) drop.classList.remove('open');
-    });
-
-    // small UX: preserve last section on reload via hash
-    (function(){
-      const hash = location.hash.replace('#','');
-      if(hash){ const el = document.getElementById(hash); if(el) navigateTo(hash); }
-    })();
-
-
-    
-     
-
-  </script>
+</div>
+<script>
+const githubPagesUrl='https://lallaza-ai.github.io/Lallaza/';
+const sections=document.querySelectorAll('main section');
+const sidebarBtns=document.querySelectorAll('.sidebar-menu button[data-section]');
+sidebarBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sec=btn.dataset.section;
+    sections.forEach(s=>s.classList.remove('active'));
+    document.getElementById(sec).classList.add('active');
+    sidebarBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+document.getElementById('liveLinkBtn').addEventListener('click',()=>{window.open(githubPagesUrl,'_blank');});
+function openAuth(mode){
+  const modal=document.getElementById('authModal');
+  modal.classList.add('open'); modal.style.visibility='visible'; modal.style.opacity='1';
+  const title=document.getElementById('authTitle');
+  const nameWrapper=document.getElementById('nameWrapper');
+  const submit=document.getElementById('authSubmit');
+  if(mode==='register'){
+    title.textContent='Register';
+    nameWrapper.style.display='block';
+    submit.onclick=registerUser;
+  }else{
+    title.textContent='Login';
+    nameWrapper.style.display='none';
+    submit.onclick=loginUser;
+  }
+}
+function closeAuth(){const modal=document.getElementById('authModal'); modal.classList.remove('open'); modal.style.visibility='hidden'; modal.style.opacity='0';}
+function registerUser(){
+  const name=document.getElementById('nameInput').value.trim();
+  const email=document.getElementById('emailInput').value.trim();
+  const pass=document.getElementById('passInput').value.trim();
+  if(!name||!email||!pass){alert('Fill all fields'); return;}
+  const users=JSON.parse(localStorage.getItem('sg_users')||'{}');
+  if(users[email]){alert('User already registered'); return;}
+  users[email]={name,pass};
+  localStorage.setItem('sg_users',JSON.stringify(users));
+  alert('Registration successful');
+  closeAuth();
+}
+function loginUser(){
+  const email=document.getElementById('emailInput').value.trim();
+  const pass=document.getElementById('passInput').value.trim();
+  const users=JSON.parse(localStorage.getItem('sg_users')||'{}');
+  if(users[email] && users[email].pass===pass){
+    alert('Login successful — welcome '+users[email].name);
+    closeAuth();
+    document.getElementById('welcomeScreen').style.display='none';
+    document.getElementById('mainContent').style.display='flex';
+  }else alert('Incorrect email or password');
+}
+function logout(){document.getElementById('mainContent').style.display='none';document.getElementById('welcomeScreen').style.display='flex';}
+</script>
 </body>
 </html>
-
-
-
-
