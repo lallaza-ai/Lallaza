@@ -262,6 +262,7 @@
     const liveLink = document.getElementById('liveLink');
     const openLink = document.getElementById('openLink');
     const qrUrl = encodeURIComponent(githubPagesUrl);
+    qrImg.src = 'frame.png';
     qrImg.src = `https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=${qrUrl}&choe=UTF-8`;
     liveLink.textContent = githubPagesUrl;
     openLink.href = githubPagesUrl;
@@ -339,12 +340,12 @@
 
 
     
-    const qrImg = document.getElementById('qrImg');
-    qrImg.src = 'frame.png'; 
+     
 
   </script>
 </body>
 </html>
+
 
 
 
