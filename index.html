@@ -52,6 +52,7 @@ ul,ol{padding-left:20px;}
 .auth-panel .btn:hover{background:var(--green-1);}
 .auth-panel .ghost{background:transparent; border:1px solid var(--green-2); color:var(--green-2);}
 .auth-panel small{display:block; margin-top:8px; color:var(--muted);}
+iframe.pdf-viewer{width:100%; height:600px; border:1px solid #ccc; border-radius:8px;}
 </style>
 </head>
 <body>
@@ -73,6 +74,7 @@ ul,ol{padding-left:20px;}
       <button data-section="suggestions">Suggestions</button>
       <button data-section="conclusion">Conclusion</button>
       <button data-section="references">References</button>
+      <button data-section="presentation">Presentation</button>
       <button id="liveLinkBtn">Live Site</button>
     </div>
     <button id="logoutBtn" onclick="logout()">Logout</button>
@@ -86,6 +88,9 @@ ul,ol{padding-left:20px;}
     <section id="suggestions"><h2>Suggestions</h2><ul><li>Encourage small household gardens.</li><li>Promote rainwater harvesting.</li></ul></section>
     <section id="conclusion"><h2>Conclusion</h2><p>Community gardens show promise in addressing poverty and hunger.</p></section>
     <section id="references"><h2>References</h2><ol><li>Department of Agriculture, 2024.</li><li>Grow Together SA, 2023.</li></ol></section>
+    <section id="presentation"><h2>Project Presentation</h2>
+      <iframe src="Presentation%205[2].pdf" class="pdf-viewer"></iframe>
+    </section>
   </main>
 </div>
 <div id="authModal">
